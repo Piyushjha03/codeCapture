@@ -1,0 +1,10 @@
+.testCase_wrapper{
+    min-width: 300px;
+    min-height: 150px;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+}

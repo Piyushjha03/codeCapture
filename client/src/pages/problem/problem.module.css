@@ -1,0 +1,351 @@
+.problemPage_wrapper{
+    width: 100vw;
+    height: 100vh;
+    background: #1a1a1a;
+    padding:12px;
+    font-family: "Urbanist", sans-serif;
+    color: white;
+    overflow: scroll;
+}
+.problemContentOpen{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin: 30px 0;
+    transition: height 0.7s ease;
+}
+.problemContent{
+    height: 100%;
+    background: #dcc1ff;
+    color: #1a1a1a;
+    padding:12px 12px 100px 12px;
+    border-radius: 12px;
+    overflow: scroll;
+  
+}
+
+.problemTitle{
+
+    font-size: 32px;
+    margin: 12px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+p{
+    font-family: "Urbanist", sans-serif;
+    margin: 6px 0;
+    word-spacing: 1px;
+    line-height: 150%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre{
+    font-family: "Urbanist", sans-serif;
+    margin: 6px 0;
+    word-spacing: 1px;
+    line-height: 150%;
+    white-space: pre-wrap;
+    word-wrap: break-word; /* Break long words */
+}
+code{
+    padding: 3px;
+    border-radius: 4px;
+    background: #2f2f2f;
+    color: white;
+}
+ul{
+    
+}
+li{
+    margin: 6px;
+}
+li::marker{
+    content: '';
+}
+.problemContentClosed{
+    height: 200px;
+    width: 100%;
+    background: #dcc1ff;
+    border-radius:36px;
+    margin: 30px 0;
+    position: relative;
+    transition: height 0.7s ease;
+}
+.problemContentClosedIcon,.problemContentOpenIcon{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 36px;
+    color: #1a1a1a;
+}
+
+.codeEditor{
+    width: 100%;
+    /* height: 100%; */
+    background: #262626;
+    overflow: scroll;
+    padding: 12px;
+    border-radius: 12px;
+}
+.codeEditorOpen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #262626;
+    min-height: 200px;
+    z-index: 999;
+    /* position: relative; */
+    /* margin: 30px 0; */
+    /* transition: height 0.7s ease; */
+}
+.codeEditorClosed{
+    height: 200px;
+    width: 100%;
+    /* margin: 30px 0; */
+    position: relative;
+    /* transition: height 0.7s ease; */
+}
+.codeEditorOpenIcon,.codeEditorClosedIcon{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 36px;
+    color: #fff;
+}
+.codearea{
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    font-size: 18px;
+    overflow: scroll;
+}
+.code{
+    font-family: "Urbanist", sans-serif;
+    height: 100%;
+    width: 100%;
+    background: inherit;
+    border: inherit;
+    outline: inherit;
+    color:white;
+    line-height: 150%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-spacing: 1px;
+    font-size: 24px;
+    background: #222;
+    border-radius: 12px;
+    padding: 24px;
+}
+.takePhoto{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dcc1ff;
+    padding: 12px;
+    font-size: 24px;
+    border-radius: 50%;
+    color: black;
+}
+.photoPreview{
+    position: absolute;
+   
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 200px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.photoPreview img{
+    height: 60%;
+    width: 60%;
+    object-fit: cover;
+}
+.photoOptions{
+    display: flex;
+    width: 100%;
+    margin: 12px 0;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.removePhoto,.uploadPhoto{
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dcc1ff;
+    border-radius: 50%;
+    font-size: 36px;
+    cursor: pointer;
+    color: black;
+}
+.loader_pos{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: #dcc1ff;
+    padding: 12px;
+    font-size: 24px;
+    border-radius: 50%;
+    color: black; */
+}
+.buttonOptions{
+    width: 100%;
+    height: 100px;
+    margin: 30px 0;
+    border-radius:12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background: #dcc1ff; */
+}
+.runBttn{
+
+}
+.runTestCaseLoader{
+    
+}
+.testCaseCorousel{
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    overflow: scroll;
+    padding: 12px;
+    margin-top: 12px;
+}
+.compileError{
+    background: #372A2B;
+    color:#F7615C ;
+    margin: 12px;
+    padding: 12px;
+    border-radius: 12px;
+}
+.EachTestCase{
+    min-width: 300px;
+    min-height: 150px;
+    background: #262626;
+    color: white;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+}
+.loaderSkelton{
+    margin: 20px 0;
+    min-width: 300px;
+    min-height: 150px;
+    background: #262626;
+    color: white;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex-grow: 1; 
+}
+.testCaseCorousel::-webkit-scrollbar{
+    display: none;
+}
+.input{
+    width: 100%;
+   
+    padding: 6px 18px;
+}
+.input pre{
+    background: #2f2f2f;
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+.input pre:hover{
+    outline: #F7615C solid 2px;
+}
+.submissionResult_wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
+}
+.submissionResult{
+    width: 100%;
+    max-width: 500px;
+    background: #222;
+    border: solid 1px #454545;
+    padding: 24px 44px;
+    border-radius: 12px;
+}
+.submission_msg{
+    font-size: 24px;
+    margin: 12px 0;
+    font-weight: 600;
+}
+.submission_testCasePassed{
+    color: #1a1a1a;
+    padding: 12px;
+    border-radius: 12px;
+    margin: 12px 0;
+}
+.submission_lastTestCase{
+    background:#2f2f2f;
+    padding: 12px;
+    border-radius: 12px;
+}
+.submission_lastTestCase_input,.submission_lastTestCase_output,.submission_lastTestCase_expectedOutput{
+    background: #454545;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin: 16px 0;
+}
+.CorrectOutput{
+    background: #2f2f2f;
+    border: solid 1px #454545;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+.runtime,.memory{
+    background:#454545;
+    font-size: 18px;
+    margin: 12px 0;
+    padding: 12px;
+    border-radius: 12px;
+}
+.CorrectOutput span{
+    /* color:rgb(59, 245, 183); */
+    color: #5CF761;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.backtohome{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 36px;
+    z-index: 999;
+    background: #222;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
