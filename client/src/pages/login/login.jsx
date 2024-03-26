@@ -69,6 +69,13 @@ const Login = () => {
           <div className={styles.homePage_container}>
           <ToastContainer />
             <div className={styles.formContainer}>
+              <pre className={styles.info}>
+                1. Login to your <a style={{color:"orange"}} href="https://leetcode.com" target="_blank">Leetcode account</a> <br/>
+                2. Inspect element by right clicking on the page or press control+shift+j <br/>
+                3. Go to application tab <br/>
+                4. Find cookies in the left panel <br/>
+                5. Copy csrf token and LEETCODE_SESSION
+              </pre>
               <form
                 className={styles.form}
                 action=""
