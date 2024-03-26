@@ -16,11 +16,11 @@ function App() {
   return (
     <>
     <Routes>
-      <Route element={<ProtectedRoute/>}>
+      {/* <Route element={<ProtectedRoute/>}> */}
        <Route path='/' element={isLoggedIn ? <Navigate to="/feed" /> : <Navigate to="/login" />} />
       <Route path='/feed'element={<Feed/>} />
       <Route path='/problem/:id'element={<Problem/>} />
-      </Route>
+      {/* </Route> */}
       <Route path='/login'element={<Login/>} />
     </Routes>
 
