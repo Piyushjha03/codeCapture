@@ -14,7 +14,7 @@ import problemRouter from './router/problemRouter.js';
 dotenv.config();
 const app = express();
 app.use(cors({
-    origin:"https://codecapture.vercel.app",
+    origin:"http://localhost:5173",
     credentials:true
 }));
 app.use(express.json());
