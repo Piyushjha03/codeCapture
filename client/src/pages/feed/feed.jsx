@@ -94,33 +94,33 @@ export const Feed = () => {
   const dropdownRef = useRef(null);
 
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  const loginDetails = {
-    csrf: document?.cookie?.split("csrftokenfromserver=")[1]?.split(";")[0],
-    LEETCODE_SESSION: document.cookie?.split("LEETCODE_SESSION_fromserver=")[1]?.split(";")[0],
-  }
+  // const loginDetails = {
+  //   csrf: document?.cookie?.split("csrftokenfromserver=")[1]?.split(";")[0],
+  //   LEETCODE_SESSION: document.cookie?.split("LEETCODE_SESSION_fromserver=")[1]?.split(";")[0],
+  // }
   const nav=useNavigate()
-  const Auth = useQuery({
-    queryKey: ["login"],
-    queryFn: async () => {
-      if(loginDetails.csrf !== '' && loginDetails.LEETCODE_SESSION !== ''){
-        return await login(loginDetails);
-      }
-    },
-    refetchOnWindowFocus: true,
-    retry:false,
-  });
-  useEffect(()=>{
-    if(Auth.isFetched && Auth.data) {
-      if(Auth.data?.data?.userStatus?.username !== userInfo?.username){
-        localStorage.removeItem("userInfo");
-        nav("/login");
-      }
-    }
-    if(Auth.isError){
-      localStorage.removeItem("userInfo");
-      nav("/login");
-    }
-  },[Auth.data ,userInfo,Auth.isError])
+  // const Auth = useQuery({
+  //   queryKey: ["login"],
+  //   queryFn: async () => {
+  //     if(loginDetails.csrf !== '' && loginDetails.LEETCODE_SESSION !== ''){
+  //       return await login(loginDetails);
+  //     }
+  //   },
+  //   refetchOnWindowFocus: true,
+  //   retry:false,
+  // });
+  // useEffect(()=>{
+  //   if(Auth.isFetched && Auth.data) {
+  //     if(Auth.data?.data?.userStatus?.username !== userInfo?.username){
+  //       localStorage.removeItem("userInfo");
+  //       nav("/login");
+  //     }
+  //   }
+  //   if(Auth.isError){
+  //     localStorage.removeItem("userInfo");
+  //     nav("/login");
+  //   }
+  // },[Auth.data ,userInfo,Auth.isError])
 
   const feedData = useQuery({
     queryKey: ["feed"],
