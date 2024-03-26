@@ -13,7 +13,7 @@ import {
   submitCodeApi,
   submitCodeStatusApi,
 } from "../../api";
-import {  useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { IoIosArrowDropupCircle } from "react-icons/io";
@@ -29,7 +29,6 @@ import { LuClock4 } from "react-icons/lu";
 import { BsFillAwardFill } from "react-icons/bs";
 import { MdOutlineMemory } from "react-icons/md";
 import { CgFeed } from "react-icons/cg";
-
 
 export const Problem = () => {
   // usestates
@@ -183,7 +182,7 @@ export const Problem = () => {
     mutationFn: submitCode,
     mutationKey: ["submitCode"],
     onSuccess: (data) => {
-      setContinuousLoaderSubmit(true)
+      setContinuousLoaderSubmit(true);
       if (data?.data?.submission_id) {
         setSubmission_id(data.data.submission_id);
         submitCodeStatusMutation.mutate();
@@ -212,15 +211,14 @@ export const Problem = () => {
           submitCodeStatusMutation.mutate();
         }, 2000);
       } else if (data.data.state === "SUCCESS") {
-        setContinuousLoaderSubmit(false)
+        setContinuousLoaderSubmit(false);
         if (data.data.status_code === 11 || data.data.status_code === 10) {
           console.log(data.data);
-          setContinuousLoaderSubmit(false)
+          setContinuousLoaderSubmit(false);
           setSubmitOutput(data.data);
-
         } else if (data.data.status_code === 20) {
           setIsCompileErrorBySubmit(true);
-          setContinuousLoaderSubmit(false)
+          setContinuousLoaderSubmit(false);
           setSubmitOutput(data.data);
         }
       }
@@ -230,14 +228,18 @@ export const Problem = () => {
     },
   });
 
-  const nav =useNavigate()
+  const nav = useNavigate();
   return (
     <>
       <div className={styles.problemPage_wrapper}>
-
-        <div className={styles.backtohome} onClick={()=>{
-          nav('/feed')
-        }}><CgFeed /></div>
+        <div
+          className={styles.backtohome}
+          onClick={() => {
+            nav("/feed");
+          }}
+        >
+          <CgFeed />
+        </div>
         <div className={styles.problemTitle}>{problemTitle}</div>
 
         {/* problem content */}
@@ -528,34 +530,33 @@ export const Problem = () => {
                 )}
               </div>
             </div>
-          </>)
-          :
-          (
+          </>
+        ) : (
           (submitCodeStatusMutation.isPending || continuousLoaderSubmit) && (
             <>
-            <div className={styles.loaderSkelton}>
-              <Skeleton
-                count={1}
-                baseColor="#222"
-                highlightColor="#444"
-                height={20}
-              />
-              <Skeleton
-                count={1}
-                baseColor="#222"
-                highlightColor="#444"
-                height={20}
-              />
-              <Skeleton
-                count={1}
-                baseColor="#222"
-                highlightColor="#555"
-                height={20}
-              />
-            </div>
+              <div className={styles.loaderSkelton}>
+                <Skeleton
+                  count={1}
+                  baseColor="#222"
+                  highlightColor="#444"
+                  height={20}
+                />
+                <Skeleton
+                  count={1}
+                  baseColor="#222"
+                  highlightColor="#444"
+                  height={20}
+                />
+                <Skeleton
+                  count={1}
+                  baseColor="#222"
+                  highlightColor="#555"
+                  height={20}
+                />
+              </div>
             </>
-          ))
-        }
+          )
+        )}
 
         {/* run and submit button */}
         <div className={styles.buttonOptions}>
@@ -566,6 +567,8 @@ export const Problem = () => {
               setIsCompileErrorBySubmit(false);
               setRunCodeStatusState(null);
               setSubmitOutput(null);
+              setSubmission_id(null);
+              setTestCase(null);
               runCodeMutation.mutate();
             }}
           >
@@ -582,6 +585,8 @@ export const Problem = () => {
               setIsCompileError(false);
               setSubmitOutput(null);
               setRunCodeStatusState(null);
+              setSubmission_id(null);
+              setTestCase(null);
               submitCodeMutation.mutate();
             }}
           >
