@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI(process.env.GEN_AI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-const base_url = "https://codecaptureapi.vercel.app";
+const base_url = "http://localhost:8000";
 const axiosinstance = axios.create({
   baseURL: base_url,
   withCredentials: true,
@@ -12,7 +12,7 @@ const axiosinstance = axios.create({
 
 async function login(loginDetails) {
   const res = await axiosinstance.post(
-    "https://codecaptureapi.vercel.app/login",
+    "http://localhost:8000/login",
     loginDetails
   );
   return res;
@@ -22,7 +22,7 @@ async function login(loginDetails) {
 
 async function getallproblems(problemDetails) {
   const res = await axiosinstance.post(
-    "https://codecaptureapi.vercel.app/feed",
+    "http://localhost:8000/feed",
     problemDetails
   );
   return res;
@@ -32,7 +32,7 @@ async function getallproblems(problemDetails) {
 
 async function getProblemDetails(problemDetails) {
   const res = await axiosinstance.post(
-    "https://codecaptureapi.vercel.app/problem/content",
+    "http://localhost:8000/problem/content",
     problemDetails
   );
   return res;
@@ -58,7 +58,7 @@ async function getOcr(imageDetails) {
     return err;
   });
   const ocrRes = await axiosinstance
-    .post("https://codecaptureapi.vercel.app/problem/ocr", {
+    .post("http://localhost:8000/problem/ocr", {
       url: res.data.data.display_url,
     })
     .catch((err) => {
@@ -82,7 +82,7 @@ async function genaiApi(inputQuery) {
 
 async function runCode(codeDetails) {
   const res = await axiosinstance
-    .post("https://codecaptureapi.vercel.app/problem/run", codeDetails)
+    .post("http://localhost:8000/problem/run", codeDetails)
     .catch((err) => {
       return err;
     });
@@ -91,7 +91,7 @@ async function runCode(codeDetails) {
 
 async function runCodeStatus(codeDetails) {
   const res = axiosinstance
-    .post("https://codecaptureapi.vercel.app/problem/runStatus", codeDetails)
+    .post("http://localhost:8000/problem/runStatus", codeDetails)
     .catch((err) => {
       return err;
     });
@@ -101,7 +101,7 @@ async function runCodeStatus(codeDetails) {
 async function submitCodeApi(submitCodeDetails) {
   console.log(submitCodeDetails);
   const res = await axiosinstance
-    .post("https://codecaptureapi.vercel.app/problem/submit", submitCodeDetails)
+    .post("http://localhost:8000/problem/submit", submitCodeDetails)
     .catch((err) => {
       return err;
     });
@@ -110,7 +110,7 @@ async function submitCodeApi(submitCodeDetails) {
 
 async function submitCodeStatusApi(submitCodeDetails) {
   const res = await axiosinstance
-    .post("https://codecaptureapi.vercel.app/problem/submitStatus", submitCodeDetails)
+    .post("http://localhost:8000/problem/submitStatus", submitCodeDetails)
     .catch((err) => {
       return err;
     });
@@ -118,7 +118,7 @@ async function submitCodeStatusApi(submitCodeDetails) {
 }
 
 async function getEditorData(problemDetails) {
-  const res = await axiosinstance.post("https://codecaptureapi.vercel.app/problem/editor", problemDetails)
+  const res = await axiosinstance.post("http://localhost:8000/problem/editor", problemDetails)
     .catch((err) => {
       console.log(err);
       return err;
@@ -126,7 +126,7 @@ async function getEditorData(problemDetails) {
   return res.data;
 }
 async function getTestCaseData(problemDetails) {
-  const res = await axiosinstance.post("https://codecaptureapi.vercel.app/problem/testcase", problemDetails)
+  const res = await axiosinstance.post("http://localhost:8000/problem/testcase", problemDetails)
     .catch((err) => {
       console.log(err);
       return err;
