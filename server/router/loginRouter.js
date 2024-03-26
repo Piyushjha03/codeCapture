@@ -15,12 +15,12 @@ loginRouter.post('/', async(req,res) => {
       if(response.data.userStatus.username.length===0){
         res.cookie('csrftokenfromserver',`${loginDetails.csrf}`,{ 
           sameSite: 'None',
-          secure:false,
+          secure:true,
           maxAge:1,
         });  
         res.cookie('LEETCODE_SESSION_fromserver',`${loginDetails.LEETCODE_SESSION}`,{
           sameSite: 'None',
-          secure:false,
+          secure:true,
           maxAge:1,
         }); 
         return res.status(400).send('Invalid Credentials')
@@ -28,11 +28,11 @@ loginRouter.post('/', async(req,res) => {
       }
       res.cookie('csrftokenfromserver',`${loginDetails.csrf}`,{ 
         sameSite: 'None',
-        secure:false,
+        secure:true,
       });  
       res.cookie('LEETCODE_SESSION_fromserver',`${loginDetails.LEETCODE_SESSION}`,{
         sameSite: 'None',
-        secure:false,
+        secure:true,
       });  
       return res.status(200).send(response.data);
 });
