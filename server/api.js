@@ -85,7 +85,7 @@ const axiosinstance = axios.create();
 export async function runCode(codeDetails, cookies) {
   try {
     const getRunId = await axiosinstance.post(
-      "https://leetcode.com/problems/two-sum/interpret_solution/",
+      `https://leetcode.com/problems/${codeDetails.title}/interpret_solution/`,
       codeDetails,
       {
         headers: {
@@ -126,7 +126,7 @@ export async function runCodeStatus(codeDetails, cookies) {
 export async function submitCode(submitDetails, cookies) {
   try {
     const submission_id = await axiosinstance.post(
-      `https://leetcode.com/problems/two-sum/submit/`,
+      `https://leetcode.com/problems/${codeDetails.title}/submit/`,
       submitDetails,
       {
         headers: {
