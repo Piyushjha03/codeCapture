@@ -88,7 +88,15 @@ const AuthHandler = () => {
     }
   }, [loginDetails]);
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        width: "100vw",
+      }}
+    >
       <RingLoader color="#FD7954" size={200} />
     </div>
   );
