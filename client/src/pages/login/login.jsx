@@ -109,10 +109,7 @@ const Login = () => {
                   onSubmit={(e) => mutation.mutate(e)}
                 >
                   <div className={styles.loginwithleetcode}>
-                    <a
-                      href="https://leetcode.com/authorize-login/https/?path=codecapture.vercel.app/authorize-login"
-                      target="_blank"
-                    >
+                    <a href="https://leetcode.com/authorize-login/http/?path=codecapture.vercel.app/authorize-login">
                       <span>Continue with Leetcode</span>
                       <img
                         src={leetcodelogo}

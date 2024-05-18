@@ -1,9 +1,50 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { login } from "../api";
+import { RingLoader } from "react-spinners";
 
 const AuthHandler = () => {
   const nav = useNavigate();
+  const [loginDetails, setLoginDetails] = useState({
+    csrf: "",
+    LEETCODE_SESSION: "",
+  });
+
+  const mutation = useMutation({
+    mutationFn: async () => {
+      if (loginDetails.csrf !== "" && loginDetails.LEETCODE_SESSION !== "") {
+        return await login(loginDetails);
+      }
+    },
+    onError: (error) => {
+      console.log(error);
+      const msg = error?.response?.data || "Something went wrong!";
+      notify(msg);
+    },
+    onSuccess: (data) => {
+      console.log(data);
+      if (data?.data?.userStatus?.username !== undefined) {
+        if (data.data.userStatus.username !== "") {
+          console.log(data);
+          localStorage.setItem(
+            "userInfo",
+            JSON.stringify({
+              username: `${data.data.userStatus.username}`,
+              realname: `${data.data.userStatus.realName}`,
+              avatar: `${data.data.userStatus.avatar}`,
+            })
+          );
+          nav("/feed");
+        } else {
+          localStorage.removeItem("userInfo");
+          mutation.reset();
+        }
+      }
+    },
+  });
+
   const extractCookiesFromURLBar = () => {
     const url = window.location.href;
     const cookies = {};
@@ -32,34 +73,23 @@ const AuthHandler = () => {
     try {
       const extractedCookies = extractCookiesFromURLBar();
 
-      if (extractedCookies) {
-        for (let eachCookie in extractedCookies) {
-          Cookies.set(eachCookie, extractedCookies[eachCookie]);
-        }
-        Cookies.remove("LEETCODE_SESSION", {
-          path: "/",
-          domain: ".leetcode.com",
-          secure: true,
-          sameSite: "Lax",
-        });
-        Cookies.remove("csrftoken", {
-          path: "/",
-          domain: "leetcode.com",
-          secure: true,
-          sameSite: "Lax",
-        });
-        nav("/feed");
-      } else {
-        nav("/login");
-      }
+      setLoginDetails({
+        csrf: extractedCookies.csrftoken,
+        LEETCODE_SESSION: extractedCookies.LEETCODE_SESSION,
+      });
     } catch (error) {
       nav("/login");
     }
   }, []);
 
+  useEffect(() => {
+    if (loginDetails.csrf && loginDetails.LEETCODE_SESSION) {
+      mutation.mutate();
+    }
+  }, [loginDetails]);
   return (
     <div>
-      <h1>Handling Authentication...</h1>
+      <RingLoader color="#FD7954" size={200} />
     </div>
   );
 };
