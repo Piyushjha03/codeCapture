@@ -19,8 +19,8 @@ export async function getGlobalData(loginDetails) {
         headers: {
           "Content-Type": "application/json",
           "X-Csrftoken": `${loginDetails.csrf}`,
-          "Referer": "https://leetcode.com/",
-          "Cookie": `csrftoken=${loginDetails.csrf};LEETCODE_SESSION=${loginDetails.LEETCODE_SESSION}`,
+          Referer: "https://leetcode.com/",
+          Cookie: `csrftoken=${loginDetails.csrf};LEETCODE_SESSION=${loginDetails.LEETCODE_SESSION}`,
         },
       }
     );
@@ -45,8 +45,8 @@ export async function getProblemSetQuestionList(problemDetails, cookieDetails) {
         headers: {
           "Content-Type": "application/json",
           "X-Csrftoken": `${csrftoken}`,
-          "Referer": "https://leetcode.com/",
-          "Cookie": `csrftoken=${csrftoken};LEETCODE_SESSION=${LEETCODE_SESSION}`,
+          Referer: "https://leetcode.com/",
+          Cookie: `csrftoken=${csrftoken};LEETCODE_SESSION=${LEETCODE_SESSION}`,
         },
       }
     );
@@ -90,10 +90,10 @@ export async function runCode(codeDetails, cookies) {
       {
         headers: {
           "content-type": "application/json",
-          "cookie": `csrftoken=${cookies.csrftokenfromserver};LEETCODE_SESSION=${cookies.LEETCODE_SESSION_fromserver}`,
-          "x-csrftoken": `${cookies.csrftokenfromserver}`,
-          "Origin": "https://leetcode.com",
-          "Referer": `https://leetcode.com/problems/${codeDetails.title}/interpret_solution/`,
+          cookie: `csrftoken=${cookies.csrftoken};LEETCODE_SESSION=${cookies.LEETCODE_SESSION}`,
+          "x-csrftoken": `${cookies.csrftoken}`,
+          Origin: "https://leetcode.com",
+          Referer: `https://leetcode.com/problems/${codeDetails.title}/interpret_solution/`,
         },
       }
     );
@@ -102,7 +102,7 @@ export async function runCode(codeDetails, cookies) {
     throw error;
   }
 }
-export async function runCodeStatus(codeDetails,cookies) {
+export async function runCodeStatus(codeDetails, cookies) {
   try {
     const interpret_id = codeDetails.interpret_id;
     const getRunStatus = await axiosinstance.get(
@@ -110,10 +110,10 @@ export async function runCodeStatus(codeDetails,cookies) {
       {
         headers: {
           "content-type": "application/json",
-          "cookie": `csrftoken=${cookies.csrftokenfromserver};LEETCODE_SESSION=${cookies.LEETCODE_SESSION_fromserver}`,
-          "x-csrftoken": `${cookies.csrftokenfromserver}`,
-          "Origin": "https://leetcode.com",
-          "Referer": `https://leetcode.com/problems/${codeDetails.title}/interpret_solution/`,
+          cookie: `csrftoken=${cookies.csrftoken};LEETCODE_SESSION=${cookies.LEETCODE_SESSION}`,
+          "x-csrftoken": `${cookies.csrftoken}`,
+          Origin: "https://leetcode.com",
+          Referer: `https://leetcode.com/problems/${codeDetails.title}/interpret_solution/`,
         },
       }
     );
@@ -123,7 +123,7 @@ export async function runCodeStatus(codeDetails,cookies) {
   }
 }
 
-export async function submitCode(submitDetails,cookies) {
+export async function submitCode(submitDetails, cookies) {
   try {
     const submission_id = await axiosinstance.post(
       `https://leetcode.com/problems/two-sum/submit/`,
@@ -131,10 +131,10 @@ export async function submitCode(submitDetails,cookies) {
       {
         headers: {
           "content-type": "application/json",
-          "cookie": `csrftoken=${cookies.csrftokenfromserver};LEETCODE_SESSION=${cookies.LEETCODE_SESSION_fromserver}`,
-          "x-csrftoken": `${cookies.csrftokenfromserver}`,
-          "Origin": "https://leetcode.com",
-          "Referer": `https://leetcode.com/problems/${submitDetails.title}/interpret_solution/`,
+          cookie: `csrftoken=${cookies.csrftoken};LEETCODE_SESSION=${cookies.LEETCODE_SESSION}`,
+          "x-csrftoken": `${cookies.csrftoken}`,
+          Origin: "https://leetcode.com",
+          Referer: `https://leetcode.com/problems/${submitDetails.title}/interpret_solution/`,
         },
       }
     );
@@ -145,7 +145,7 @@ export async function submitCode(submitDetails,cookies) {
   }
 }
 
-export async function submitCodeStatus(submitDetails,cookies) {
+export async function submitCodeStatus(submitDetails, cookies) {
   try {
     const submission_id = submitDetails.submission_id;
     const titleSlug = submitDetails.title;
@@ -154,10 +154,10 @@ export async function submitCodeStatus(submitDetails,cookies) {
       {
         headers: {
           "content-type": "application/json",
-          "cookie": `csrftoken=${cookies.csrftokenfromserver};LEETCODE_SESSION=${cookies.LEETCODE_SESSION_fromserver}`,
-          "x-csrftoken": `${cookies.csrftokenfromserver}`,
-          "Origin": "https://leetcode.com",
-          "Referer":`https://leetcode.com/problems/${titleSlug}/interpret_solution`,
+          cookie: `csrftoken=${cookies.csrftoken};LEETCODE_SESSION=${cookies.LEETCODE_SESSION}`,
+          "x-csrftoken": `${cookies.csrftoken}`,
+          Origin: "https://leetcode.com",
+          Referer: `https://leetcode.com/problems/${titleSlug}/interpret_solution`,
         },
       }
     );
@@ -174,10 +174,10 @@ export async function getQuestionEditorData(problemDetails, cookies) {
       variables: { titleSlug: titleSlug },
       headers: {
         "content-type": "application/json",
-        "cookie": `csrftoken=${cookies.csrftokenfromserver};LEETCODE_SESSION=${cookies.LEETCODE_SESSION_fromserver}`,
-        "x-csrftoken": `${cookies.csrftokenfromserver}`,
-        "Origin": "https://leetcode.com",
-        "Referer": `https://leetcode.com/problems/${titleSlug}/interpret_solution/`,
+        cookie: `csrftoken=${cookies.csrftoken};LEETCODE_SESSION=${cookies.LEETCODE_SESSION}`,
+        "x-csrftoken": `${cookies.csrftoken}`,
+        Origin: "https://leetcode.com",
+        Referer: `https://leetcode.com/problems/${titleSlug}/interpret_solution/`,
       },
     });
     return editorData;
@@ -193,10 +193,10 @@ export async function getTestCaseData(problemDetails, cookies) {
       variables: { titleSlug: titleSlug },
       headers: {
         "content-type": "application/json",
-        "cookie": `csrftoken=${cookies.csrftokenfromserver};LEETCODE_SESSION=${cookies.LEETCODE_SESSION_fromserver}`,
-        "x-csrftoken": `${cookies.csrftokenfromserver}`,
-        "Origin": "https://leetcode.com",
-        "Referer": `https://leetcode.com/problems/${titleSlug}/interpret_solution/`,
+        cookie: `csrftoken=${cookies.csrftoken};LEETCODE_SESSION=${cookies.LEETCODE_SESSION}`,
+        "x-csrftoken": `${cookies.csrftoken}`,
+        Origin: "https://leetcode.com",
+        Referer: `https://leetcode.com/problems/${titleSlug}/interpret_solution/`,
       },
     });
     return testCase;
@@ -204,4 +204,3 @@ export async function getTestCaseData(problemDetails, cookies) {
     throw error;
   }
 }
-

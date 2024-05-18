@@ -11,30 +11,21 @@ const axiosinstance = axios.create({
 });
 
 async function login(loginDetails) {
-  const res = await axiosinstance.post(
-    "/login",
-    loginDetails
-  );
+  const res = await axiosinstance.post("/login", loginDetails);
   return res;
 }
 
 // getallproblems
 
 async function getallproblems(problemDetails) {
-  const res = await axiosinstance.post(
-    "/feed",
-    problemDetails
-  );
+  const res = await axiosinstance.post("/feed", problemDetails);
   return res;
 }
 
 // get problem details
 
 async function getProblemDetails(problemDetails) {
-  const res = await axiosinstance.post(
-    "/problem/content",
-    problemDetails
-  );
+  const res = await axiosinstance.post("/problem/content", problemDetails);
   return res;
 }
 
@@ -118,7 +109,8 @@ async function submitCodeStatusApi(submitCodeDetails) {
 }
 
 async function getEditorData(problemDetails) {
-  const res = await axiosinstance.post("/problem/editor", problemDetails)
+  const res = await axiosinstance
+    .post("/problem/editor", problemDetails)
     .catch((err) => {
       console.log(err);
       return err;
@@ -126,12 +118,13 @@ async function getEditorData(problemDetails) {
   return res.data;
 }
 async function getTestCaseData(problemDetails) {
-  const res = await axiosinstance.post("/problem/testcase", problemDetails)
+  const res = await axiosinstance
+    .post("/problem/testcase", problemDetails)
     .catch((err) => {
       console.log(err);
       return err;
     });
-   
+
   return res?.data?.data?.question?.exampleTestcaseList;
 }
 
@@ -146,5 +139,5 @@ export {
   submitCodeApi,
   getEditorData,
   getTestCaseData,
-  submitCodeStatusApi
+  submitCodeStatusApi,
 };
