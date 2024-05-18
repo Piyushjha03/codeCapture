@@ -95,11 +95,11 @@ const Login = () => {
                   >
                     Leetcode account.
                   </a>{" "}
-                  {"\n \n"}
+                  {"\n"}
                   2. Inspect element by right clicking on the page or press
-                  control+shift+j {"\n \n"}
-                  3. Go to application tab {"\n \n"}
-                  4. Find cookies in the left panel {"\n \n"}
+                  control+shift+j {"\n"}
+                  3. Go to application tab {"\n"}
+                  4. Find cookies in the left panel {"\n"}
                   5. Copy csrf token and LEETCODE_SESSION
                 </pre>
               ) : (
