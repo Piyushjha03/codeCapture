@@ -96,12 +96,12 @@ export const Problem = () => {
       for (const key in data) {
         if (Object.prototype.hasOwnProperty.call(data, key)) {
           result += data[key].text + " ";
-          const finalCode = await genaiApi(result);
-          setOcrCode(ocrCode + finalCode);
-          setPhoto(null);
-          return;
         }
       }
+      const finalCode = await genaiApi(result);
+      setOcrCode(ocrCode + finalCode);
+      setPhoto(null);
+      return;
     } catch (error) {
       return error;
     }
