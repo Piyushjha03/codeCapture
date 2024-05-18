@@ -126,7 +126,7 @@ export async function runCodeStatus(codeDetails, cookies) {
 export async function submitCode(submitDetails, cookies) {
   try {
     const submission_id = await axiosinstance.post(
-      `https://leetcode.com/problems/${codeDetails.title}/submit/`,
+      `https://leetcode.com/problems/${submitDetails.title}/submit/`,
       submitDetails,
       {
         headers: {
