@@ -29,13 +29,11 @@ loginRouter.post("/", async (req, res) => {
     sameSite: "None",
     secure: true,
     maxAge: 1000000,
-    domain: ".vercel.app",
   });
   res.cookie("LEETCODE_SESSION", `${loginDetails.LEETCODE_SESSION}`, {
     sameSite: "None",
     secure: true,
     maxAge: 1000000,
-    domain: ".vercel.app",
   });
   return res.status(200).send(response.data);
 });
