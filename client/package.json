@@ -16,6 +16,7 @@
     "@tanstack/react-query-devtools": "^5.24.0",
     "@uiw/codemirror-theme-xcode": "^4.21.25",
     "@uiw/react-codemirror": "^4.21.25",
+    "@vercel/analytics": "^1.2.2",
     "axios": "^1.6.7",
     "dotenv": "^16.4.5",
     "js-cookie": "^3.0.5",
